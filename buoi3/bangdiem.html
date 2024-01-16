@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="baitap.css">
+    <script language="javascript" src="baitap.js"></script>
+</head>
+<body>
+    <form class="wap">
+        <h3>
+            BANG DIEM
+        </h3><br>
+        Semester 1: 
+        <input type="text" id="s1"></input><br><br>
+        Semester 2: 
+        <input type="text" id="s2"></input><br><br>
+        Year: 
+        <select id="year">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <!-- <option value="4">4</option> -->
+        </select><br><br>
+        Summary: 
+        <input type="text" id="sum" value=""></input><br><br>
+        <p id="display"></p>
+        <input type="button" onclick="functionOK()" value="OK"></input>
+        <input type="button" onclick="functionCANCEL()" value="CANCEL"></input>
+    </form>
+    <script>
+      const functionOK = () => {
+        let s1 = document.getElementById('s1').value
+        s1 = parseInt(s1)
+        let s2 = document.getElementById('s2').value
+        s2 = parseInt(s2)
+        let year = document.getElementById('year')
+
+        let value = year.options[year.selectedIndex].value
+        value = parseInt(value)
+        // console.log(value)
+        // let result
+        let tb
+        switch (value) {
+          case 1:
+            tb = (s1 + (s2*2))/3
+            tb = parseFloat(tb)
+            document.getElementById('sum').value = tb
+          case 2: 
+            tb = ((s1*2) + (s2 * 3))/5
+            tb = parseFloat(tb)
+            document.getElementById('sum').value = tb
+          case 3: 
+            tb = ((s1*3) + (s2 * 4))/7
+            tb = parseFloat(tb)
+            document.getElementById('sum').value = tb
+        }
+        if (tb >= 9) {
+          document.getElementById('display').innerHTML = "Hoc sinh gioi"
+          document.getElementById('display').style.color = 'red'
+        } else if (tb >= 7 &&  tb < 9) {
+          document.getElementById('display').innerHTML = "Hoc sinh kha"
+          document.getElementById('display').style.color = 'blue'
+        } else if (tb >= 5 && tb < 7) {
+          document.getElementById('display').innerHTML = "Hoc sinh trung binh"
+          document.getElementById('display').style.color = 'green'
+        }
+      }
+    </script>
+</body>
+</html>
