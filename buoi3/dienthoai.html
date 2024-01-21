@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .fclass {
+        display: flex;
+      }
+      .formp {
+        display: flex;
+        flex-direction: column;
+        margin-right: 40px;
+      }
+
+      .ptag {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 22px;
+      }
+
+      .image {
+        width: 400px;
+        height: 300px;
+      }
+
+      #uploadBtn, #submitBtn {
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+      
+      #uploadBtn:hover, #submitBtn:hover {
+        background-color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" class="fclass" name="frm">
+      <p class="formp">
+        Product Name:
+        <input type="text" name="pname" id="pname" />
+      </p>
+      <p class="formp">
+        Product Picture:
+        <input type="file" name="phone" id="uploadImg" accept="imade/png, image/jpg" />
+      </p>
+      <p class="formp">
+        Product Price:
+        <input type="text" name="price" id="pprice" />
+      </p>
+    </form>
+    <button type="button" id="uploadBtn" onclick="add()">Add</button>
+    <p class="ptag">Điện thoại nổi bật nhất</p>
+    <img src="" id="choosenImg" alt="" />
+    <p id="displayName"></p>
+    <p id="displayPrice"></p>
+    <button type="button" id="submitBtn">Submit</button>
+    <script>
+      const add = () => {
+        let pname = frm.pname.value
+        let price = frm.price.value
+        let uploadImg = document.getElementById('uploadImg')
+        let choosenImg = document.getElementById('choosenImg')
+        let reader = new FileReader()
+        reader.readAsDataURL(uploadImg.files[0])
+        reader.onload = () => {
+          choosenImg.setAttribute('src', reader.result)
+          choosenImg.setAttribute('class', 'image')
+        }
+        document.getElementById('displayName').innerHTML = pname
+        document.getElementById('displayPrice').innerHTML = `${price}đ`
+      }
+    </script>
+  </body>
+</html>
