@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .cotden {
+        width: 30px;
+        height: 120px;
+        background-color: rgb(0, 0, 0);
+        padding: 20px;
+        margin-top: 2px;
+        float: left;
+        margin-bottom: 5px;
+        border: 1px solid gray;
+      }
+
+      .cotden .denxanh {
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .cotden .dendo {
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .cotden .denvang {
+        width: 25px;
+        height: 25px;
+        padding: 5px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h3>Cột đèn giao thông</h3>
+    <div>
+      <button onclick="dendo()">Đèn đỏ</button>
+      <button onclick="denvang()">Đèn vàng</button>
+      <button onclick="denxanh()">Đèn xanh</button>
+    </div>
+
+    <div id="cotden" class="cotden">
+      <div id="dendo" class="dendo"></div>
+      <div id="denvang" class="denvang"></div>
+      <div id="denxanh" class="denxanh"></div>
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        function denxanh() {
+            var denXanh = document.getElementById("denxanh");
+            var denDo = document.getElementById("dendo");
+            var denVang = document.getElementById("denvang");
+
+            denXanh.style.backgroundColor = "green";
+            denDo.style.backgroundColor = "white";
+            denVang.style.backgroundColor = "white";
+        }
+
+        function dendo() {
+            var denXanh = document.getElementById("denxanh");
+            var denDo = document.getElementById("dendo");
+            var denVang = document.getElementById("denvang");
+
+            denXanh.style.backgroundColor = "white";
+            denDo.style.backgroundColor = "red";
+            denVang.style.backgroundColor = "white";
+        }
+
+        function denvang() {
+            var denXanh = document.getElementById("denxanh");
+            var denDo = document.getElementById("dendo");
+            var denVang = document.getElementById("denvang");
+
+            denXanh.style.backgroundColor = "white";
+            denDo.style.backgroundColor = "white";
+            denVang.style.backgroundColor = "yellow";
+        }
+
+    </script>
+  </body>
+</html>

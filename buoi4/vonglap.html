@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    
+    <style>
+      .square {
+        height: 60px;
+        width: 60px;
+        float: left;
+        border: 2px solid gray;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        background: yellow;
+      }
+      .square2 {
+        height: 60px;
+        width: 60px;
+        float: left;
+        border: 2px solid gray;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 10; j++) {
+          // document.write("<div class='square'><button onclick='show()'>hi</button></div>")
+          if (i % 2 === 0) {
+            document.write("<div class='square2'></div>")
+          } else {
+            document.write("<div class='square'></div>")
+          }
+        }
+        document.write("<div style='clear:both'></div>")
+      }
+      // function show() {
+      //   alert(Math.floor(Math.random() * 100))
+      // }
+    </script>
+  </body>
+</html>
