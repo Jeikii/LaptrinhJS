@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Component</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .component-container {
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+      }
+      .image-container {
+        margin-bottom: 10px;
+      }
+      .details-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      img {
+        width: 190px;
+        padding-left: 30px;
+      }
+      .buy {
+        margin-top: 10px;
+        background-color: red;
+        color: white;
+        padding: 7px;
+        border: 0px solid black;
+      }
+      .price {
+        padding-left: 20px;
+        text-decoration: line-through;
+      }
+      .name {
+        font-weight: 900;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #dcd9d9;
+        color: rgb(239, 239, 239);
+        padding: 10px;
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-right: 20px;
+      }
+
+      nav ul li:last-child {
+        margin-right: 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: rgb(87, 86, 86);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href=""
+          ><img
+            src="https://anonyviet.com/wp-content/uploads/2018/01/5aae503e4f037a5a4375944d8861fb6a.png"
+            width="10px"
+            height="90"
+            alt=""
+        /></a>
+      </div>
+      <ul>
+        <li><a href="#">Trang chủ</a></li>
+        <li><a href="#">Thời trang nam</a></li>
+        <li><a href="#">Thời trang nữ</a></li>
+        <li><a href="#">Tin tức</a></li>
+      </ul>
+      <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm..." />
+        <button>Tìm kiếm</button>
+      </div>
+    </nav>
+    <div id="product" style="display: flex"></div>
+    <script>
+      function createComponent(data) {
+        const container = document.createElement("div");
+        container.classList.add("component-container");
+
+        const imageContainer = document.createElement("div");
+        imageContainer.classList.add("image-container");
+
+        const image = document.createElement("img");
+        image.src = data.image;
+
+        const name = document.createElement("div");
+        name.classList.add("name");
+        name.textContent = data.name;
+
+        const discount = document.createElement("div");
+        discount.classList.add("discount");
+        discount.textContent = data.discount;
+
+        const price = document.createElement("div");
+        price.classList.add("price");
+        price.textContent = data.price;
+
+        const buy = document.createElement("button");
+        buy.classList.add("buy");
+        buy.textContent = "Đặt Mua";
+
+        const detailsContainer = document.createElement("div");
+        detailsContainer.classList.add("details-container");
+        detailsContainer.appendChild(discount);
+        detailsContainer.appendChild(price);
+
+        imageContainer.appendChild(image);
+
+        container.appendChild(imageContainer);
+        container.appendChild(name);
+        container.appendChild(detailsContainer);
+        container.appendChild(buy);
+
+        return container;
+      }
+
+      const appElement = document.getElementById("product");
+      const women = [
+        {
+          image:
+            "https://ann.com.vn/wp-content/uploads/11835-clean-2ae2ab6bd35628087147.jpg",
+          name: "Quần jean nữ-KO0002",
+          discount: "269.000 vnđ",
+          price: "370.000 vnđ",
+        },
+        {
+          image:
+            "https://vn-test-11.slatic.net/p/269f3192c7894d85b0d2b532d510d999.jpg",
+          name: "Áo khoác nữ-VN0002",
+          discount: "249.000 vnđ",
+          price: "369.000 vnđ",
+        },
+        {
+          image:
+            "https://bizweb.dktcdn.net/100/464/038/files/ao-thun-nu-ngan-tay-phong-trang-kieu-han-chu-don-gian-form-rong-atn001-soozy-14.jpg?v=1669274730082",
+          name: "Áo phông nữ-US0002",
+          discount: "169.000 vnđ",
+          price: "390.000 vnđ",
+        },
+      ];
+      const men = [
+        {
+          image:
+            "https://5sfashion.vn/storage/upload/images/ckeditor/nqFNBPkKhP2Co7TLkgbk2HupfkV1WGGwA97yAvg1.jpg",
+          name: "The cosmo(Đen) Quần short kaki",
+          discount: "269.000 vnđ",
+        },
+        {
+          image:
+            "https://localhouze.com/wp-content/uploads/2022/11/Quan-Baggy-Jean-Nam-Ong-Rong-Den-1.jpg",
+          name: "Quần baggy đen sang trọng QQ",
+          discount: "249.000 vnđ",
+        },
+        {
+          image:
+            "https://gympassion.vn/upload/store/2023-03/ao-ba-lo-tap-gym-nam-a679-2%20(1).jpg",
+          name: "Áo tanktop nam",
+          discount: "169.000 vnđ",
+        },
+      ];
+
+      function updateProductList(products) {
+        appElement.innerHTML = "";
+        for (const item of products) {
+          const product = createComponent(item);
+          appElement.appendChild(product);
+        }
+      }
+      const navItems = document.querySelectorAll("nav ul li a");
+      navItems.forEach((item) => {
+        item.addEventListener("click", function (event) {
+          event.preventDefault();
+          navItems.forEach((navItem) => {
+            navItem.classList.remove("active");
+          });
+          this.classList.add("active");
+          if (this.textContent === "Thời trang nam") {
+            updateProductList(men);
+          } else if (this.textContent === "Thời trang nữ") {
+            updateProductList(women);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
